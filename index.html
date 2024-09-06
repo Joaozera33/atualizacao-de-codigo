@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 94%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        /*Configurações da textarea*/
+        textarea {
+            resize: none;
+            width: 94%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #message {
+            margin-top: 10px;
+            font-size: 14px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!--Criei uma tabela onde cada input foi divido em uma célula da tabela-->
+        <table>
+            <form id="clientForm">
+                <tr>
+                    <th><h1>Cadastro de Cliente</h1></th>
+                </tr>
+                <tr>
+                    <td><label for="name">Nome:</label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="name" required></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                </tr>
+                <tr>
+                    <td><input type="email" id="email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Telefone:</label></td>
+                </tr>
+                <tr>
+                    <td><input type="tel" id="phone" required></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Cadastrar</button></td>
+                </tr>
+            </form>
+
+            <!--Foi criado um formulário para os comentários-->
+            <form>
+                <tr>
+                    <td><label for="comentarios">Comentários:</label></td>
+                </tr>
+                <tr>
+                    <td><textarea name="comentarios" id="comentarios" rows="4" cols="30" maxlength="255" required></textarea></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">Enviar</button></td>
+                </tr>
+            </form>
+        </table>
+
+        <div id="message"></div> 
+    </div>
+
+    <script>
+        document.getElementById('clientForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message');
+            
+        if (name && email && phone) {
+            message.textContent = `Cliente ${name} cadastrado com sucesso!`;
+            message.style.color = 'green';
+        } else {
+            message.textContent = 'Por favor, preencha todos os campos.';
+            message.style.color = 'red';
+        }
+    });
+    </script>
+
+</body>
+</html>
